@@ -2,7 +2,7 @@
 	"scripts": {
 		"start": "concurrently \"npm run server\" \"npm run client\"",
 		"server": "cd backend && pnpm dev",
-		"client": "cd frontend && pnpm dev"
+		"client": "cd frontend && npm run dev"
 	},
 	"devDependencies": {
 		"concurrently": "^8.2.1",
