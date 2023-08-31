@@ -1,7 +1,7 @@
 {
   "scripts": {
     "client": "cd frontend && npm run dev",
-    "server": "cd backend && pnpm dev",
+    "server": "cd backend && npm run dev",
     "setup": "npm i && cd backend && npm i && cd .. && cd frontend && npm i",
     "start": "npm run setup && concurrently \"npm run server\" \"npm run client\""
   },
