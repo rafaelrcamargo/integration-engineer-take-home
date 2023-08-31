@@ -1,11 +1,14 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
+import "./styles/globals.css";
+
+import { Toaster } from "sonner";
 import App from "./App";
-import "./App.css";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <App />
+    <Toaster richColors duration={1500} />
   </React.StrictMode>,
 );
