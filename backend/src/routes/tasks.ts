@@ -24,7 +24,7 @@ const tasks: { [key: string]: Task } = {
 };
 
 const morph = (tasks: { [key: string]: Task }) =>
-  Object.values(tasks)/* .sort((a, b) => b.timestamp - a.timestamp) */;
+  Object.values(tasks); /* .sort((a, b) => b.timestamp - a.timestamp) */
 
 router.get("/", (_, res) =>
   /**
