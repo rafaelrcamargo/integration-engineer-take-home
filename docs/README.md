@@ -96,7 +96,7 @@ To get the TODO Task List up and running, follow these steps:
     node dist/index.js
    ```
 
-   > This will build your project into the dist/ folder, ready to be hosted
+   > This will build your project into the `dist/` folder, ready to be hosted
 
    ```bash
      cd frontend
@@ -110,7 +110,7 @@ To get the TODO Task List up and running, follow these steps:
 
 This API uses Express.js and is completely written in TypeScript. It uses the `cors` middleware to allow cross-origin requests. And it has enabled the `compression` middleware to compress the responses, when working with large amounts of JSON data allowing GZIP compression can be a huge performance boost.
 
-As the base of this API is a Object, this was chosen because the indexed nature of the Object helps with the CRUD operations, as we can access the data by the ID of the task without having to iterate over the whole array thus keeping any operation O(1). And with the convenience of the `Object.values()` method we can easily get an array of all the tasks ordering them by the time they were created if needed.
+As the base of this API is a Object, this was chosen because the indexed nature of the Object helps with the CRUD operations, as we can access the data by the ID of the task without having to iterate over the whole array thus keeping any operation **O(1)**. And with the convenience of the `Object.values()` method we can easily get an array of all the tasks ordering them by the time they were created if needed.
 
 Other than that this API is behind a versioned API Router, so all routes are prefixed with `/v1`. This allows us to add new versions of the API without interfering with the old ones.
 
