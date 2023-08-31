@@ -1,13 +1,11 @@
 import { deleteTask, updateTask } from "../api";
+import { useTasks } from "../providers/tasks";
 import { Task } from "../types/task";
-import { Item } from "./item"
+import { Item } from "./item";
 
-type Props = {
-  tasks: Task[];
-  setTasks: (tasks: Task[]) => void;
-};
+export const Deck = () => {
+  const { tasks, setTasks } = useTasks();
 
-export const Deck = ({ tasks, setTasks }: Props) => {
   const deleteAndSetTasks = ({ id }: Partial<Task>) =>
     deleteTask(id!).then((tasks) => tasks && setTasks(tasks));
 
@@ -20,8 +18,8 @@ export const Deck = ({ tasks, setTasks }: Props) => {
     <div className="flex flex-col gap-2">
       {tasks?.map((task) => (
         <Item
-          key={task.id}
           task={task}
+          key={task.id}
           toggle={toggleAndSetTasks}
           deleteTask={deleteAndSetTasks}
         />

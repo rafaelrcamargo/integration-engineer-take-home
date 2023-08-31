@@ -1,22 +1,14 @@
-import { useEffect, useState } from "react";
-
-import type { Task } from "./types/task";
-import { getTasks } from "./api";
-
 import { Form } from "./components/form";
 import { Deck } from "./components/deck";
+import { TasksProvider } from "./providers/tasks";
 
 const App = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-
-  useEffect(() => {
-    getTasks().then((tasks) => setTasks(tasks));
-  }, []);
-
   return (
-    <main className="max-w-2xl w-full px-8 flex flex-col gap-8">
-      <Form setTasks={setTasks} />
-      <Deck tasks={tasks} setTasks={setTasks} />
+    <main className="max-w-2xl h-screen py-12 overflow-scroll w-full px-8 flex flex-col gap-8">
+      <TasksProvider>
+        <Form /> {/* The form handles the creations off new tasks */}
+        <Deck /> {/* The deck handles the items and it's actions */}
+      </TasksProvider>
     </main>
   );
 };

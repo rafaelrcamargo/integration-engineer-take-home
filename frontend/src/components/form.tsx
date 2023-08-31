@@ -1,15 +1,14 @@
 import { FormEvent } from "react";
 
-import type { Task } from "../types/task";
-import { Plus } from "react-feather";
+import { useTasks } from "../providers/tasks";
 import { createTask } from "../api";
 import { cn } from "../utils";
 
-type Props = {
-  setTasks: (tasks: Task[]) => void;
-};
+import { Plus } from "react-feather";
 
-export const Form = ({ setTasks }: Props) => {
+export const Form = () => {
+  const { setTasks } = useTasks();
+
   // Handle the form submission, this form is uncontrolled,
   // this makes for a better UX using Native HTML elements and events
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
