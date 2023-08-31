@@ -18,7 +18,6 @@ export const Form = () => {
       title: (e.currentTarget[0] as HTMLInputElement).value,
       description: (e.currentTarget[1] as HTMLInputElement).value,
     }).then(tasks => tasks && setTasks(tasks))
-
     ;(e.target as HTMLFormElement).reset()
     ;(e.currentTarget[0] as HTMLInputElement).focus()
   }

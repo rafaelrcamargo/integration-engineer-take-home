@@ -7,7 +7,7 @@ export const Deck = () => {
   const { tasks, setTasks } = useTasks()
 
   const deleteAndSetTasks = ({ id }: Partial<Task>) =>
-    deleteTask(id!).then(tasks => tasks && setTasks(tasks))
+    deleteTask(String(id)).then(tasks => tasks && setTasks(tasks))
 
   const toggleAndSetTasks = ({ id, completed }: Partial<Task>) =>
     updateTask({ id, completed: !completed }).then(

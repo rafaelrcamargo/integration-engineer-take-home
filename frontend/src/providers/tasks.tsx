@@ -13,7 +13,7 @@ import { getTasks } from "../api"
 type Context = { tasks: Task[]; setTasks: (tasks: Task[]) => void }
 export const TasksContext = createContext<Context>({
   tasks: [],
-  setTasks: () => {},
+  setTasks: () => null,
 })
 
 export const TasksProvider: FC<PropsWithChildren> = ({ children }) => {
