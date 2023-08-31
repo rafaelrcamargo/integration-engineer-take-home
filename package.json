@@ -3,10 +3,12 @@
     "client": "cd frontend && npm run dev",
     "server": "cd backend && npm run dev",
     "setup": "npm i && cd backend && npm i && cd .. && cd frontend && npm i",
-    "start": "npm run setup && concurrently \"npm run server\" \"npm run client\""
+    "start": "npm run setup && concurrently \"npm run server\" \"npm run client\"",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,md}\""
   },
   "devDependencies": {
     "concurrently": "^8.2.1",
-    "prettier": "3.0.3"
+    "prettier": "3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.4"
   }
 }

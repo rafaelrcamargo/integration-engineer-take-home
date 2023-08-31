@@ -10,6 +10,6 @@
  */
 
 export const isEmpty = (params: { [key: string]: string }) => {
-  const empty = Object.keys(params).filter((key) => !params[key]);
-  return { hasEmpty: empty.length > 0, params: empty };
-};
+  const empty = Object.keys(params).filter(key => !params[key])
+  return { hasEmpty: empty.length > 0, params: empty }
+}

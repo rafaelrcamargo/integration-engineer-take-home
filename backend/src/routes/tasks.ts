@@ -1,10 +1,10 @@
-import { Router } from "express";
+import { Router } from "express"
 
-import type { Task } from "../types/task";
-import { isEmpty } from "../utils";
-import { toTask } from "./utils";
+import type { Task } from "../types/task"
+import { isEmpty } from "../utils"
+import { toTask } from "./utils"
 
-const router = Router();
+const router = Router()
 
 const tasks: { [key: string]: Task } = {
   "0": {
@@ -13,11 +13,11 @@ const tasks: { [key: string]: Task } = {
     title: "Sample task!",
     description: "That's a sample task, feel free to delete it!",
     timestamp: new Date().getTime(),
-  }
-};
+  },
+}
 
 const morph = (tasks: { [key: string]: Task }) =>
-  Object.values(tasks); /* .sort((a, b) => b.timestamp - a.timestamp) */
+  Object.values(tasks) /* .sort((a, b) => b.timestamp - a.timestamp) */
 
 router.get("/", (_, res) =>
   /**
@@ -27,10 +27,10 @@ router.get("/", (_, res) =>
    */
 
   res.json(morph(tasks)),
-);
+)
 
 router.post("/", (req, res) => {
-  const { title, description } = req.body;
+  const { title, description } = req.body
 
   /**
    * ! Error handling.
@@ -38,27 +38,27 @@ router.post("/", (req, res) => {
    * - We also return the missing parameters, so the client can know what went wrong.
    */
 
-  const { hasEmpty, params } = isEmpty({ title, description });
+  const { hasEmpty, params } = isEmpty({ title, description })
 
   if (hasEmpty)
     return res
       .status(400)
-      .json({ error: "Required parameters are missing.", params });
+      .json({ error: "Required parameters are missing.", params })
 
   /**
    * With the error handling out of the way, we can create the task.
    * - We add a timestamp, so we can sort the tasks by the last created/edited.
    */
 
-  const task = toTask({ title, description });
+  const task = toTask({ title, description })
 
-  tasks[task.id] = task;
-  return res.json(morph(tasks));
-});
+  tasks[task.id] = task
+  return res.json(morph(tasks))
+})
 
 router.put("/:id", (req, res) => {
-  const { title, description, completed } = req.body;
-  const { id } = req.params;
+  const { title, description, completed } = req.body
+  const { id } = req.params
 
   /**
    * With the error handling out of the way, we can update the task.
@@ -66,38 +66,38 @@ router.put("/:id", (req, res) => {
    * - We also check if the task exists, and return a 404 error if it doesn't.
    */
 
-  const oldTask = tasks[id];
-  if (!oldTask) return res.status(404).json({ error: "Task not found." });
+  const oldTask = tasks[id]
+  if (!oldTask) return res.status(404).json({ error: "Task not found." })
 
   const newTask = toTask({
     id: id,
     title: title || oldTask.title,
     description: description || oldTask.description,
     completed: completed ?? oldTask.completed,
-  });
+  })
 
-  tasks[newTask.id] = newTask;
-  return res.json(morph(tasks));
-});
+  tasks[newTask.id] = newTask
+  return res.json(morph(tasks))
+})
 
 router.delete("/:id", (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params
 
   /**
    * ! Error handling.
    * - We check if the task exists, and return a 404 error if it doesn't.
    */
 
-  const task = tasks[id];
+  const task = tasks[id]
 
-  if (!task) return res.status(404).json({ error: "Task not found." });
+  if (!task) return res.status(404).json({ error: "Task not found." })
 
   /**
    * With the error handling out of the way, we can delete the task.
    */
 
-  delete tasks[id];
-  return res.json(morph(tasks));
-});
+  delete tasks[id]
+  return res.json(morph(tasks))
+})
 
-export default router;
+export default router

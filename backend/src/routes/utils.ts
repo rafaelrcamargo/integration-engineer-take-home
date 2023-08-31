@@ -1,7 +1,7 @@
 // ? This is a local collection of utility functions, meant to be used within the /tasks route.
 
-import { Task } from "../types/task";
-import crypto from "crypto";
+import { Task } from "../types/task"
+import crypto from "crypto"
 
 /**
  * Create a new task.
@@ -17,4 +17,4 @@ export const toTask = (task: Partial<Task>): Task => ({
   completed: task?.completed || false,
   description: task.description || "",
   title: task.title || "",
-});
+})

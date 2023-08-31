@@ -1,11 +1,11 @@
-import { memo, useState } from "react";
+import { memo, useState } from "react"
 
-import type { Task } from "../types/task";
-import { Modal } from "./modal";
-import { cn } from "../utils";
+import type { Task } from "../types/task"
+import { Modal } from "./modal"
+import { cn } from "../utils"
 
-import { Circle, CheckCircle } from "react-feather";
-import { toast } from "sonner";
+import { Circle, CheckCircle } from "react-feather"
+import { toast } from "sonner"
 
 /**
  * This helps React to skip rendering the component if the props are equal.
@@ -18,13 +18,13 @@ import { toast } from "sonner";
  */
 
 const areEqual = (prevProps: Props, nextProps: Props) =>
-  prevProps.task.timestamp === nextProps.task.timestamp;
+  prevProps.task.timestamp === nextProps.task.timestamp
 
 type Props = {
-  task: Task;
-  toggle: (task: Partial<Task>) => void;
-  deleteTask: (task: Partial<Task>) => void;
-};
+  task: Task
+  toggle: (task: Partial<Task>) => void
+  deleteTask: (task: Partial<Task>) => void
+}
 
 export const Item = memo(
   ({
@@ -32,15 +32,15 @@ export const Item = memo(
     deleteTask,
     task: { id, title, description, completed },
   }: Props) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
 
     return (
       <>
         <div
-          className="flex relative gap-2 cursor-pointer bg-neutral-50 justify-between border rounded-lg p-4 border-neutral-500/20 shadow-md hover:scale-[1.025] hover:shadow-xl duration-150"
+          className="relative flex cursor-pointer justify-between gap-2 rounded-lg border border-neutral-500/20 bg-neutral-50 p-4 shadow-md duration-150 hover:scale-[1.025] hover:shadow-xl"
           onClick={() => toggle({ id, completed })}
         >
-          <div className="flex gap-2 items-center">
+          <div className="flex items-center gap-2">
             {/* Checkbox */}
             <div
               className={cn({
@@ -55,42 +55,42 @@ export const Item = memo(
             {/* Body */}
             <div
               className={cn({
-                "duration-300 flex flex-col line-through ": true,
+                "flex flex-col line-through duration-300 ": true,
                 "decoration-neutral-700": completed,
                 "decoration-neutral-700/0": !completed,
               })}
             >
-              <p className="md:max-w-[256px] max-w-[128px] truncate">{title}</p>
-              <span className="text-sm text-neutral-500 md:max-w-[256px] max-w-[128px] truncate">
+              <p className="max-w-[128px] truncate md:max-w-[256px]">{title}</p>
+              <span className="max-w-[128px] truncate text-sm text-neutral-500 md:max-w-[256px]">
                 {description}
               </span>
             </div>
           </div>
 
           {/* Actions */}
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-2 [&>button]:outline-none justify-center items-center">
+          <div className="absolute right-4 top-1/2 flex -translate-y-1/2 items-center justify-center gap-2 [&>button]:outline-none">
             <button
-              className="bg-red-400 hover:bg-red-500 rounded-full h-4 w-4"
-              onClick={(e) => {
-                e.stopPropagation();
-                deleteTask({ id });
+              className="h-4 w-4 rounded-full bg-red-400 hover:bg-red-500"
+              onClick={e => {
+                e.stopPropagation()
+                deleteTask({ id })
               }}
             />
             <button
-              className="bg-yellow-400 hover:bg-yellow-500 rounded-full h-4 w-4"
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsModalOpen(true);
+              className="h-4 w-4 rounded-full bg-yellow-400 hover:bg-yellow-500"
+              onClick={e => {
+                e.stopPropagation()
+                setIsModalOpen(true)
               }}
             />
             <button
-              className="bg-green-400 hover:bg-green-500 rounded-full h-4 w-4"
-              onClick={(e) => {
-                e.stopPropagation();
+              className="h-4 w-4 rounded-full bg-green-400 hover:bg-green-500"
+              onClick={e => {
+                e.stopPropagation()
                 toast.message("I'm not really useful.", {
                   description: "But this design wouldn't work without me. :)",
                   duration: 3000,
-                });
+                })
               }}
             />
           </div>
@@ -106,7 +106,7 @@ export const Item = memo(
           />
         )}
       </>
-    );
+    )
   },
   areEqual,
-);
+)
