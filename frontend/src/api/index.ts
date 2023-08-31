@@ -1,13 +1,15 @@
 import { Task } from "../types/task";
 import { toast } from "sonner";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const getTasks = async () => {
-  const response = await fetch(`http://localhost:8000/v1/tasks`);
+  const response = await fetch(`${API_URL}/tasks`);
   return response.json() as Promise<Task[]>;
 };
 
 export const createTask = async (task: Partial<Task>) => {
-  const response = await fetch(`http://localhost:8000/v1/tasks`, {
+  const response = await fetch(`${API_URL}/tasks`, {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
     method: "POST",
@@ -28,7 +30,7 @@ export const createTask = async (task: Partial<Task>) => {
 };
 
 export const updateTask = async (task: Partial<Task>) => {
-  const response = await fetch(`http://localhost:8000/v1/tasks/${task.id}`, {
+  const response = await fetch(`${API_URL}/tasks/${task.id}`, {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(task),
     method: "PUT",
@@ -43,7 +45,7 @@ export const updateTask = async (task: Partial<Task>) => {
 };
 
 export const deleteTask = async (id: string) => {
-  const response = await fetch(`http://localhost:8000/v1/tasks/${id}`, {
+  const response = await fetch(`${API_URL}/tasks/${id}`, {
     method: "DELETE",
   });
 
