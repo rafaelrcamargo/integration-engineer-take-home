@@ -8,8 +8,12 @@
     "serve": "vite preview --port 3000"
   },
   "dependencies": {
+    "clsx": "^2.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
+    "sonner": "^0.7.0",
+    "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
     "@types/node": "18.13.0",
