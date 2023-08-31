@@ -15,6 +15,6 @@ export const toTask = (task: Partial<Task>): Task => ({
   id: task?.id || crypto.randomUUID(),
   timestamp: task?.timestamp || new Date().getTime(),
   completed: task?.completed || false,
-  description: task.description!,
-  title: task.title!,
+  description: task.description || "",
+  title: task.title || "",
 });
