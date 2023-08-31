@@ -53,6 +53,8 @@ The Duda Solutions Engineering Team
 
 # Task management application
 
+This is a task management application built with React.js and Express.js. It allows users to create, update and delete tasks in a simple and intuitive way, keeping a good user experience and a responsive design.
+
 ## How to Run the Application
 
 To get the TODO Task List up and running, follow these steps:
