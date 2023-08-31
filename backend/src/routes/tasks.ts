@@ -7,20 +7,13 @@ import { toTask } from "./utils";
 const router = Router();
 
 const tasks: { [key: string]: Task } = {
-  "1": {
-    id: "1",
-    title: "Task 1",
-    description: "Description 1",
+  "0": {
+    id: "0",
     completed: false,
+    title: "Sample task!",
+    description: "That's a sample task, feel free to delete it!",
     timestamp: new Date().getTime(),
-  },
-  "2": {
-    id: "2",
-    title: "Task 2",
-    description: "Description 2",
-    completed: false,
-    timestamp: new Date().getTime(),
-  },
+  }
 };
 
 const morph = (tasks: { [key: string]: Task }) =>
