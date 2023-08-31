@@ -74,7 +74,7 @@ To get the TODO Task List up and running, follow these steps:
    ```
 
 3. **Set the .env file:**
-   This repository comes with a .env.local file that contains the environment variables needed to run the application. If you're running the application locally, you don't need to change anything. However, if you're running it on a server, you'll need to change the `PORT` variable to the port you want the backend to run on.
+   This repository comes with a `.env.local` file that contains the environment variables needed to run the application. If you're running the application locally, you don't need to change anything. However, if you're running it on a server, you'll need to change the `VITE_API_URL` on the frontend and if is desired setup a custom `PORT` on the backend.
 
 4. **Run the automated setup script:**
    This project comes with an automated setup script that will install all dependencies and start the backend and frontend servers concurrently. To run it, execute:
@@ -179,5 +179,3 @@ For a better user experience, this application uses `Sonner` to display notifica
 ![Sample image](./sample.png)
 
 > An internal example of the application running with some tasks and notifications.
-
-##
