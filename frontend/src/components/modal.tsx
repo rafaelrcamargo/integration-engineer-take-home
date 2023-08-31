@@ -5,6 +5,7 @@ import { updateTask } from "../api";
 import { cn } from "../utils";
 
 import { X } from "react-feather";
+import { toast } from "sonner";
 
 type ModalProps = {
   id: string;
@@ -26,6 +27,8 @@ export const Modal = ({ id, title, description, isOpen }: ModalProps) => {
       title: (e.currentTarget[0] as HTMLInputElement).value,
       description: (e.currentTarget[1] as HTMLInputElement).value,
     }).then((tasks) => tasks && setTasks(tasks));
+
+    toast.success("Task updated successfully");
 
     isOpen(false);
   };

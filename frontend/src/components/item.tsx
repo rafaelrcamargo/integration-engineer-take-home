@@ -5,6 +5,7 @@ import { Modal } from "./modal";
 import { cn } from "../utils";
 
 import { Circle, CheckCircle } from "react-feather";
+import { toast } from "sonner";
 
 /**
  * This helps React to skip rendering the component if the props are equal.
@@ -86,7 +87,10 @@ export const Item = memo(
               className="bg-green-400 hover:bg-green-500 rounded-full h-4 w-4"
               onClick={(e) => {
                 e.stopPropagation();
-                console.log("open?");
+                toast.message("I'm not really useful.", {
+                  description: "But this design wouldn't work without me. :)",
+                  duration: 3000,
+                });
               }}
             />
           </div>

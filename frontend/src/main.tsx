@@ -9,6 +9,6 @@ import App from "./App";
 createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <App />
-    <Toaster richColors duration={1500} />
+    <Toaster richColors closeButton duration={1500} />
   </React.StrictMode>,
 );
